@@ -6,16 +6,22 @@ import { store } from './data/store.js'
 
 export default {
   name: "App",
+  components: {
+    AppHeader,
+    AppMain
+  },
   data() {
     return {
-      store: store
+      store: store,
+      cardList: []
     }
   },
   mounted() {
     axios.get(store.urlAPI).then(result => {
       console.log(result.data.data)
       this.store.cards = result.data.data
-      console.log("secondo console log:" + this.store.cards)
+      console.log("secondo console log:", this.store.cards)
+      cardList = this.store.cards
     })
   }
 }
@@ -26,7 +32,7 @@ export default {
 <template>
   <AppHeader />
 
-  <AppMain />
+  <AppMain :cards="cardList" />
 </template>
 
 <style lang="scss" scoped></style>
