@@ -13,7 +13,6 @@ export default {
   data() {
     return {
       store: store,
-      cardList: []
     }
   },
   mounted() {
@@ -21,7 +20,6 @@ export default {
       console.log(result.data.data)
       this.store.cards = result.data.data
       console.log("secondo console log:", this.store.cards)
-      cardList = this.store.cards
     })
   }
 }
@@ -32,7 +30,7 @@ export default {
 <template>
   <AppHeader />
 
-  <AppMain :cards="cardList" />
+  <AppMain />
 </template>
 
 <style lang="scss" scoped></style>

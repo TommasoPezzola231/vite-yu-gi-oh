@@ -3,43 +3,59 @@ import { store } from '../data/store.js'
 
 export default {
     name: "AppMain",
-    props: [
-        "cards"
-    ],
     data() {
         return {
             store
         }
     },
     mounted() {
-        console.log(this.cards)
+        console.log("hasbullah", this.store.cards)
     }
 }
 </script>
 
 <template>
     <main>
-        <section class="d-flex">
-            <div v-for="card in cards" class="card">
-
+        <section class="container d-flex">
+            <div v-for="card in store.cards" class="card">
+                <img :src=card.card_images[0].image_url_small>
+                <h4>{{ card.name }}</h4>
+                <h6>{{ card.archetype }}</h6>
             </div>
         </section>
     </main>
 </template>
 
 <style lang="scss" scoped>
+main {
+    background-color: orange;
+    padding: 5rem 0;
+}
+
+section {
+    background-color: white;
+    padding: 3rem;
+}
+
 .d-flex {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .card {
-    width: 20%;
-    padding: 1rem;
+    width: calc(100% / 5 - 1rem);
+    background-color: orange;
+    margin-bottom: 2rem;
 
-    &img {
+    img {
         width: 100%;
+    }
+
+    h4,
+    h6 {
+        text-align: center;
     }
 }
 </style>
