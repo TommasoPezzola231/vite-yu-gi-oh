@@ -8,6 +8,9 @@ export default {
             store
         }
     },
+    methods() {
+
+    },
     mounted() {
     }
 }
@@ -15,6 +18,12 @@ export default {
 
 <template>
     <main>
+        <div class="container">
+            <select>
+                <option v-for="archetype in this.store.archetypes">{{ archetype.archetype_name }}</option>
+            </select>
+        </div>
+
         <section class="container d-flex">
             <div v-for="card in store.cards" class="card">
                 <img :src=card.card_images[0].image_url_small>

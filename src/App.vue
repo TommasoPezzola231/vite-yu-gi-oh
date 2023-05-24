@@ -19,6 +19,11 @@ export default {
     axios.get(store.urlAPI).then(result => {
       this.store.cards = result.data.data
     })
+
+    axios.get(store.urlAPIArchetypes).then(r => {
+      console.log(r.data)
+      this.store.archetypes = r.data
+    })
   }
 }
 
