@@ -34,11 +34,16 @@ export default {
 
 <template>
     <main>
-        <div class="container">
+        <div class="container d-flex">
             <select @change="filteredCards" v-model="archetypeAttivo">
                 <option v-for="archetype in this.store.archetypes">{{ archetype.archetype_name }}</option>
             </select>
+
+            <div>
+                <p>Found {{ store.cards.length }} cards</p>
+            </div>
         </div>
+
 
         <section class="container d-flex">
             <div v-for="card in store.cards" class="card">
@@ -59,6 +64,11 @@ main {
 section {
     background-color: white;
     padding: 3rem;
+}
+
+p {
+    font-size: 20px;
+    font-weight: bold;
 }
 
 .d-flex {
