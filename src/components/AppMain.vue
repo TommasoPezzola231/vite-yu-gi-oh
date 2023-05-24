@@ -9,7 +9,6 @@ export default {
         }
     },
     mounted() {
-        console.log("hasbullah", this.store.cards)
     }
 }
 </script>
