@@ -1,17 +1,33 @@
 <script>
 import { store } from '../data/store.js'
+import axios from 'axios'
 
 export default {
     name: "AppMain",
     data() {
         return {
-            store
+            store,
+            archetypeAttivo: "ABC"
         }
     },
-    methods() {
+    methods: {
+        filteredCards() {
+            console.log(this.store.urlAPI),
+                this.changeURL(this.archetypeAttivo)
 
+
+            axios.get(store.urlAPI).then(result => {
+                this.store.cards = result.data.data
+            })
+        },
+        changeURL(element) {
+            this.store.urlAPI = "https://db.ygoprodeck.com/api/v7/cardinfo.php",
+                this.store.urlAPI += `?archetype=${element}`
+
+        }
     },
     mounted() {
+
     }
 }
 </script>
@@ -19,7 +35,7 @@ export default {
 <template>
     <main>
         <div class="container">
-            <select>
+            <select @change="filteredCards" v-model="archetypeAttivo">
                 <option v-for="archetype in this.store.archetypes">{{ archetype.archetype_name }}</option>
             </select>
         </div>
