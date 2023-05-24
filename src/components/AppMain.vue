@@ -7,7 +7,7 @@ export default {
     data() {
         return {
             store,
-            archetypeAttivo: "ABC"
+            archetypeAttivo: `"C"`
         }
     },
     methods: {
